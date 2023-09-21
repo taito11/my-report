@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  laravel:
+    container_name: "laravel"
+    build: 
+      context: ./docker/php
+    volumes:
+      - .:/var/www/html
+  
+  nginx:
+    image: nginx:1.25
+    container_name: "nginx"
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - laravel
+
+  write_database:
+    platform: linux/x86_64
+    image: mysql:8.1
+    container_name: "write_database"
+    ports:
+      - "3306:3306"
+    restart: always
+
+  read_database:
+    platform: linux/x86_64
+    image: mysql:8.1
+    container_name: "read_database"
+    ports:
+      - "3307:3306"
+    restart: always
+    depends_on:
+      - write_database
+
+
