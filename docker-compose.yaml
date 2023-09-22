@@ -19,22 +19,12 @@ services:
     depends_on:
       - laravel
 
-  write_database:
+  mysql:
     platform: linux/x86_64
     image: mysql:8.1
-    container_name: "write_database"
+    container_name: "mysql"
     ports:
       - "3306:3306"
     restart: always
-
-  read_database:
-    platform: linux/x86_64
-    image: mysql:8.1
-    container_name: "read_database"
-    ports:
-      - "3307:3306"
-    restart: always
-    depends_on:
-      - write_database
 
 
