@@ -27,16 +27,16 @@ defineProps({
         <div v-if="canLogin" class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
             <Link v-if="$page.props.auth.user" :href="route('dashboard')"
                 class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-white-500 text-white">
-            Dashboard</Link>
+            ダッシュボード</Link>
 
             <template v-else>
                 <Link :href="route('login')"
                     class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-white-500 text-white">
-                Log in</Link>
+                ログイン</Link>
 
                 <Link v-if="canRegister" :href="route('register')"
                     class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-white-500 text-white">
-                Register</Link>
+                登録</Link>
             </template>
         </div>
         <div class="w-screen h-screen flex flex-col items-center justify-center bg-blue-500 text-white">
