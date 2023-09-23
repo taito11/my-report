@@ -21,7 +21,7 @@ class ReportController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('ReportCreate');
     }
 
     /**

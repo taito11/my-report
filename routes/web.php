@@ -31,7 +31,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/report_list', [ReportController::class, 'index'])->middleware(['auth', 'verified'])->name('reportList');
+    Route::resource('reports', ReportController::class)->names(
+        [
+            'index' => 'report.index',
+            'create' => 'report.create',
+            'edit' => 'report.edit',
+            'destroy' => 'report.destroy'
+        ]
+    );
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

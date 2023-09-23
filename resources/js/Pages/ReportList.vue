@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 
 defineProps({
     reports: {
@@ -17,7 +17,7 @@ defineProps({
         <template #header>
             <div class="flex items-center justify-between">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">自分レポート一覧</h2>
-                <button class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">レポート作成</button>
+                <Link :href="route('report.create')"><button class="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600">レポート作成</button></Link>
             </div>
         </template>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
