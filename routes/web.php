@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,14 +26,12 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/report_list', function () {
-    return Inertia::render('ReportList');
-})->middleware(['auth', 'verified'])->name('reportList');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/report_list', [ReportController::class, 'index'])->middleware(['auth', 'verified'])->name('reportList');
 });
 
 require __DIR__.'/auth.php';

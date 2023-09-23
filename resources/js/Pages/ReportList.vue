@@ -2,6 +2,12 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
 
+defineProps({
+    reports: {
+        type: Array,
+    },
+});
+
 </script>
 
 <template>
@@ -32,20 +38,6 @@ import { Head } from '@inertiajs/vue3';
 <script>
 export default
     {
-        data() {
-            return {
-                reports: [
-                    { id: 1, title: 'レポート 1', content: 'テストデータ 1' },
-                    { id: 2, title: 'レポート 2', content: 'テストデータ 2' },
-                    { id: 3, title: 'レポート 3', content: 'テストデータ 3' },
-                    { id: 4, title: 'レポート 4', content: 'テストデータ 4' },
-                    { id: 5, title: 'レポート 5', content: 'テストデータ 5' },
-                    { id: 6, title: 'レポート 6', content: 'テストデータ 6' },
-                    { id: 7, title: 'レポート 7', content: 'テストデータ 7' },
-                    { id: 8, title: 'レポート 8', content: 'テストデータ 8' },
-                ],
-            }
-        },
         methods: {
             handleReportClick(report) {
                 console.log(`クリックされたレポート: ${report.title}`);
